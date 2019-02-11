@@ -23,7 +23,7 @@ namespace PooVueling.Tests
 
         [DataRow(4, 3, 1)]
         [DataRow(1, 3, -2)]
-        [TestMethod()]
+        [DataTestMethod]
         public void RestaTest(int num1, int num2, int resultado)
         {
             Assert.IsTrue(iCalculadora.Resta(num1, num2) == resultado);
@@ -31,7 +31,7 @@ namespace PooVueling.Tests
 
         [DataRow(4, 3, 12)]
         [DataRow(4, 0, 0)]
-        [TestMethod()]
+        [DataTestMethod]
         public void MultiplicacionTest(int num1, int num2, int resultado)
         {
             Assert.IsTrue(iCalculadora.Multiplicacion(num1, num2) == resultado);
@@ -39,11 +39,20 @@ namespace PooVueling.Tests
 
         [DataRow(0, 3, 0)]
         [DataRow(9, 3, 3)]
-        [DataRow(9, 0, 0)] // what to do
-        [TestMethod()]
+        [DataTestMethod]
         public void DivisionTest(int num1, int num2, int resultado)
         {
             Assert.IsTrue(iCalculadora.Division(num1, num2) == resultado);
+        }
+
+
+        [DataRow(9, 0, 0)]
+        [DataTestMethod]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void DivisionDivideByZeroExceptionTest(int num1, int num2, int resultado)
+        {
+            Assert.IsTrue(iCalculadora.Division(num1, num2) == resultado);
+
         }
     }
 }

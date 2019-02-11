@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace PooVueling
 {
     public class Calculadora : ICalculadora, ICloneable
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod
+        ().DeclaringType);
+
         public object Clone()
         {
             throw new NotImplementedException();
@@ -30,11 +36,17 @@ namespace PooVueling
 
         public int Division(int num1, int num2)
         {
-            if (num2 == 0)
+
+            try
             {
-                return 0;
+                return num1 / num2;
             }
-            return num1 / num2;
+            catch (DivideByZeroException e)
+            {
+                //Console.WriteLine(e.Message);
+                log.Error(e.Message);
+                throw;
+            }
         }
     }
 }

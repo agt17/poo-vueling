@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PooVueling;
+using NUnit.Framework;
 
 namespace PooVueling.NunitV.Integration.Tests
 {
-    using NUnit.Framework;
 
     [TestFixture]
     public class NunitCalculadoraTest
@@ -37,8 +37,13 @@ namespace PooVueling.NunitV.Integration.Tests
 
         [TestCase(4, 2, 2)]
         [TestCase(9, 3, 3)]
-        [TestCase(9, 0, 0)]
         public void DivisionTest(int num1, int num2, int resultado)
+        {
+            Assert.IsTrue(iCalculadora.Division(num1, num2) == resultado);
+        }
+
+        //[TestCase(9, 0, 0), ExpectedException = typeof(DivideByZeroException)]
+        public void DivisionDivideByZeroExceptionTest(int num1, int num2, int resultado)
         {
             Assert.IsTrue(iCalculadora.Division(num1, num2) == resultado);
         }
