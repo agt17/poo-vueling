@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
-
 namespace PooVueling
 {
     public class Calculadora : ICalculadora, ICloneable
@@ -43,8 +41,8 @@ namespace PooVueling
             }
             catch (DivideByZeroException e)
             {
-                //Console.WriteLine(e.Message);
                 log.Error(e.Message);
+                //Console.ReadLine();
                 throw;
             }
         }

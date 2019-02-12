@@ -42,10 +42,14 @@ namespace PooVueling.NunitV.Integration.Tests
             Assert.IsTrue(iCalculadora.Division(num1, num2) == resultado);
         }
 
-        //[TestCase(9, 0, 0), ExpectedException = typeof(DivideByZeroException)]
+        [TestCase(9, 0, 0)]
         public void DivisionDivideByZeroExceptionTest(int num1, int num2, int resultado)
         {
-            Assert.IsTrue(iCalculadora.Division(num1, num2) == resultado);
+            //Assert.That(() => iCalculadora.Division(num1, num2));
+            //Throws.TypeOf<DivideByZeroException>();
+            //var a = () => iCalculadora.Division(num1, num2);
+            //Assert.That(iCalculadora.Division(num1,num2), Throws.TypeOf<DivideByZeroException>());
+            Assert.Throws<DivideByZeroException>(() => iCalculadora.Division(num1, num2));
         }
     }
 }

@@ -10,6 +10,8 @@ namespace PooVueling
     {
         static void Main(string[] args)
         {
+            ICalculadora iCalc = new Calculadora();
+            iCalc.Division(9, 0);
         }
     }
 }

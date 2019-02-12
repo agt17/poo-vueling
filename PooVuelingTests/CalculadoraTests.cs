@@ -52,7 +52,6 @@ namespace PooVueling.Tests
         public void DivisionDivideByZeroExceptionTest(int num1, int num2, int resultado)
         {
             Assert.IsTrue(iCalculadora.Division(num1, num2) == resultado);
-
         }
     }
 }
